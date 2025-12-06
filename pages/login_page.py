@@ -22,6 +22,10 @@ class LoginPage:
         self.email_input.fill(email)
         self.password_input.fill(password)
         self.login_button.click()
+        # NOVÝ RIADOK: Explicitné čakanie na zobrazenie Log out
+        # Hovoríme Playwrightu: "Počkaj maximálne 5 sekúnd, kým sa objaví tento element."
+        self.logout_link.wait_for(state="visible", timeout=5000) 
+        # Poznámka: timeout je v milisekundách (5000ms = 5s)
         
     def is_logged_out(self) -> bool:
         """Helper method to check if the login link is visible."""
